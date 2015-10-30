@@ -9,11 +9,43 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.parse.FindCallback;
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
+import java.util.HashMap;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        MapbookParse.initialize(this);
+        ParseObject data = new ParseObject("Test");
+        data.put("hello", "nice");
+        try {
+            data.save();
+            String id = data.getObjectId();
+            System.out.println("Object id is: " + id);
+            ParseObject queryData = MapbookParse.query("Test", id);
+            // by now, queryData should be synced with data
+            queryData.put("hello", "not nice");
+            // data.getString("hello") should be equal to "not nice"
+            System.out.println("Put data is: " + data.getString("hello"));
+            queryData.save();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        defaultContentViewStuff();
+
+    }
+
+    public void defaultContentViewStuff() {
+        // Default content view stuff here.
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
