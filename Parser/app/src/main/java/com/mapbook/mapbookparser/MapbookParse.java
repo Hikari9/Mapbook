@@ -73,36 +73,33 @@ public class MapbookParse {
                 */
         }
 
+        /**
+         * Setting cache policy
+         * https://www.parse.com/docs/android/guide#queries
+         *
+         * Parse provides several different cache policies:
+         * IGNORE_CACHE: The query does not load from the cache or save results to the cache. IGNORE_CACHE is the default cache policy.
+         * CACHE_ONLY: The query only loads from the cache, ignoring the network. If there are no cached results, that causes a ParseException.
+         * NETWORK_ONLY: The query does not load from the cache, but it will save results to the cache.
+         * CACHE_ELSE_NETWORK: The query first tries to load from the cache, but if that fails, it loads results from the network. If neither cache nor network succeed, there is a ParseException.
+         * NETWORK_ELSE_CACHE: The query first tries to load from the network, but if that fails, it loads results from the cache. If neither network nor cache succeed, there is a ParseException.
+         * CACHE_THEN_NETWORK: The query first loads from the cache, then loads from the network. In this case, the FindCallback will actually be called twice - first with the cached results, then with the network results. This cache policy can only be used asynchronously with findInBackground.
+         *
+        public static ParseQuery<ParseObject> getQuery() {
+                ParseQuery<ParseObject> query = ParseQuery.getQuery()
+                query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+                return query;
+                /*
+                query.findInBackground(new FindCallback<ParseObject>() {
+                        public void done(List<ParseObject> scoreList, ParseException e) {
+                                if (e == null) {
+                                        // Results were successfully found, looking first on the
+                                        // network and then on disk.
+                                } else {
+                                        // The network was inaccessible and we have no cached data
+                                        // for this query.
+                                }
+                        }
+                });
+        }*/
 }
-
-/*
-// Parse example
-
-// Enable Local datastore.
-Parse.enableLocalDatastore(this);
-
-        // initialize parse
-        Parse.initialize(this, "YyN0pW0gRrPy4vQYebW86IT03bYysrQZi8n5XkfC", "AjGE0VZly2K7Qja72nmAgQa0JAt02zpZPWlCN48g");
-
-        // create parse test object
-        ParseObject test = new ParseObject("TestObject");
-        test.put("id", 94);
-        test.put("column", "Not Hello World");
-        test.saveInBackground();
-
-        // delete parse object
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("TestObject");
-        query.whereEqualTo("column", "Hello World");
-        query.findInBackground(new FindCallback<ParseObject>() {
-public void done(List<ParseObject> invites, ParseException e) {
-        if (e == null) {
-        // iterate over all messages and delete them
-        for (ParseObject invite : invites) {
-        invite.deleteInBackground();
-        }
-        } else {
-        //Handle condition here
-        }
-        }
-        });
-        */
