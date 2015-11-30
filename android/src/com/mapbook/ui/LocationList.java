@@ -114,7 +114,7 @@ public class LocationList extends MapbookActivity {
 	@Override
 	protected void onPopupMenuItemClick(MenuItem item) {
 		switch (item.getItemId()) {
-			case R.id.menu_add_marker:
+			case R.id.menu_add_location:
 				// TODO: launch add marker activity
 				alert("To do: launch add marker activity");
 				break;

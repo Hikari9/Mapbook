@@ -1,7 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
     <item
-        android:id="@+id/menu_add_marker"
+        android:id="@+id/menu_add_location"
+        android:title="Add Location"
+        />
+    <item
+        android:id="@+id/menu_view_map"
+        android:title="View Map"
+        />
+    <!-- 
+    <item
+        android:id="@+id/menu_start_recording"
+        android:title="Start Recording"
+        />
+    <item
+        android:id="@+id/menu_my_locations"
+        android:title="My Locations"
+        />
+    <item
+        android:id="@+id/menu_my_paths"
+        android:title="My Paths"
+        />
+    <item
+        android:id="@+id/menu_map"
+        android:title="Map">
+        <menu>
+            <item
+		        android:id="@+id/menu_sattelite_view"
+		        android:title="Satellite View" />
+            <item
+		        android:id="@+id/menu_street_map_view"
+		        android:title="Street Map View" />
+        </menu>
+    </item>
+    <item
+        android:id="@+id/menu_account"
+        android:title="Account">
+        <menu>
+            <item
+	        android:id="@+id/menu_edit_profile"
+	        android:title="Edit Profile" />
+            <item
+	        android:id="@+id/menu_friends"
+	        android:title="Friends" />
+		    <item
+		        android:id="@+id/menu_settings"
+		        android:title="Settings"
+		        />
+        </menu>
+    </item>
+    <item
+        android:id="@+id/menu_help"
+        android:title="Help"
+        />
+    <item
+        android:id="@+id/menu_logout"
         android:title="Add Marker"
         />
+        -->
 </menu>
